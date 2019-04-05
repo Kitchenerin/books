@@ -11,6 +11,23 @@
   </thead>
 
   <tbody>
+  <script>
+    function show()
+    {
+      $.ajax({
+        url: "authors",
+        cache: true,
+        success: function(html){
+          $("#index").html(html);
+        }
+      });
+    }
+
+    $(document).ready(function(){
+      show();
+      setInterval('show()',30000);
+    });
+  </script>
   <% @authors.each do |author| %>
       <tr>
         <td><%= author.name %></td>
