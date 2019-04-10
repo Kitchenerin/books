@@ -2,7 +2,7 @@
 
 <h1>Listing Books</h1>
 
-<table>
+<table class="table">
   <thead>
   <tr>
     <th>Title</th>
@@ -20,13 +20,18 @@
         <td><%= book.author_id %></td>
         <td><%= link_to 'Show', book %></td>
         <td><%= link_to 'Edit', edit_book_path(book) %></td>
-        <td><%= link_to 'Destroy', book, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><span class="destroy_button" data-id=<%=book.id%>> Destroy </span></td>
       </tr>
   <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Book', new_book_path %>
-<%= link_to 'Back_to_Author', authors_path(:author_id => @author_id) %>
+<div class="row">
+<div class="col-md-6 col-sm-12">
+  <%= link_to 'New Book', new_book_path %>
+</div>
+<div class="col-md-6 d-sm-none d-md-block">
+  <%= link_to 'Back to Author', authors_path(:author_id => @author_id) %>
+</div>
+</div>

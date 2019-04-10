@@ -5,17 +5,25 @@ class AuthorsController < ApplicationController
   # GET /authors.json
   def index
     @authors = Author.all
+
+
+    respond_to do |format|
+      format.html {}
+      format.json { render json: {authors: @authors.to_json} }
+
+    end
   end
 
   # GET /authors/1
   # GET /authors/1.json
   def show
+
   end
 
   # GET /authors/new
   def new
     @author = Author.new
-    2.times { @author.books.build }
+    #2.times{@author.books.build}
   end
 
   # GET /authors/1/edit
@@ -71,6 +79,6 @@ class AuthorsController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def author_params
-    params.require(:author).permit(:name, books_attributes: [ :title, :number_of_page])
+    params.require(:author).permit(:name, books_attributes: [:title, :number_of_page])
   end
 end
